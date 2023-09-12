@@ -3,6 +3,7 @@ import { Pressable, Platform } from 'react-native';
 import styles from '../styles';
 
 interface PressableTouchProps {
+  accessibilityLabel?: string;
   rippleColor?: string;
   disabled?: boolean;
   children: ReactNode;
@@ -10,10 +11,11 @@ interface PressableTouchProps {
 }
 
 const PressableTouch: React.FC<PressableTouchProps> = props => {
-  const { rippleColor, disabled, onPress, children } = props;
+  const { accessibilityLabel, rippleColor, disabled, onPress, children } = props;
 
   return (
     <Pressable
+      accessibilityLabel={accessibilityLabel}
       onPress={onPress}
       disabled={disabled}
       style={({ pressed }) => [

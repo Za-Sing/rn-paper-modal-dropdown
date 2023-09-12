@@ -30,6 +30,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
   const {
     error,
     value,
+    accessibilityLabel,
     label,
     required,
     disabled,
@@ -268,17 +269,20 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     <PaperProvider theme={paperTheme}>
       <View>
         <PressableTouch
+          accessibilityLabel={accessibilityLabel ?? (removeLabel ? '' : label) + ': ' + labelv}
           onPress={onTextInputFocus}
           disabled={disabled}
           rippleColor={rippleColor}
         >
           <View
+            accessible={false}
             style={[styles.fullWidth, mainContainerStyle]}
             ref={pViewRef}
             onLayout={androidOnLayout}
             pointerEvents="none"
           >
             <TextInput
+              accessible={false}
               label={labelAction()}
               placeholder={textInputPlaceholder}
               placeholderTextColor={textInputPlaceholderColor}
@@ -299,6 +303,7 @@ const Dropdown: React.FC<IDropdownProps> = props => {
                   name={dropdownIcon}
                   size={dropdownIconSize}
                   color={iconColor}
+                  onPress={onTextInputFocus}
                 />
               }
               mode={mode}

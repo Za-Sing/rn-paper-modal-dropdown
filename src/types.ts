@@ -22,6 +22,10 @@ export interface IDefaultValue {
 
 export interface IDropdownDefault {
   /**
+   * Set the dropdown accessibility label
+   */
+  accessibilityLabel?: string;
+  /**
    * Set the dropdown label
    */
   label: string;
