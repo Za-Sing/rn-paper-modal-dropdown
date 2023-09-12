@@ -35,6 +35,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
   const {
     error,
     value,
+    accessibilityLabel,
     label,
     required,
     disabled,
@@ -291,17 +292,20 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
       <View>
         <View>
           <PressableTouch
+            accessibilityLabel={accessibilityLabel ?? (removeLabel ? '' : label) + ': ' + labelv}
             onPress={onTextInputFocus}
             disabled={disabled}
             rippleColor={rippleColor}
           >
             <View
+              accessible={false}
               style={[styles.fullWidth, mainContainerStyle]}
               ref={pViewRef}
               onLayout={androidOnLayout}
               pointerEvents="none"
             >
               <TextInput
+                accessible={false}
                 label={labelAction()}
                 value={labelv}
                 style={[styles.textInput, textInputStyle]}
@@ -320,6 +324,7 @@ const GroupDropdown: React.FC<IGroupDropdownProps> = props => {
                     name={dropdownIcon}
                     size={dropdownIconSize}
                     color={iconColor}
+                    onPress={onTextInputFocus}
                   />
                 }
                 mode={mode}
