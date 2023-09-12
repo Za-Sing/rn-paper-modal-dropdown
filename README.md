@@ -548,6 +548,10 @@ export interface IDropdownData {
 
 ---
 
+#### `accessibilityLabel`
+
+Set the accessibility label for the dropdown field. By default this is set to "`label`: `value`"
+
 #### `label` (`required`)
 
 Set the dropdown field label.
